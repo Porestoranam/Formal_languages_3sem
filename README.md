@@ -16,5 +16,89 @@
 
 Ниже тесты, которые покрывают 90% написанного кода программы.
 Code coverage я не сделал, если это необходимое условие, то обязательно этим займусь.
+Tests:
+
+Test 1
+Input:
+ab+c.aba.∗.bac.+.+*
+abacb
+Output:
+5
 
 
+
+Test 2
+Input:
+acb..bab.c.*.ab.ba.+.+*a.
+acbac
+Output:
+5
+
+
+Test 3
+Input:
+a*b.bc*.+*
+aaabbccc
+Output:
+8
+
+
+
+Test 4
+Input:
+ab.*a.c.a*bc+*.c.+*a.c.
+ababacaaaccab
+Output:
+13
+
+
+
+Test 5
+Input:
+cb+a.ab.c.*+*ac.b+.
+abcbacaacb
+Output:
+9
+
+
+
+Test 6
+Input:
+ab.ba.+*ba.*.bab+.c+.
+cc
+Output:
+1
+
+
+
+Test 7
+Input:
+ab.c.*ca.b.*+***
+abcabccabacc
+Output:
+10
+
+
+
+Test 8
+Input:
+ab.*ba.*.cc.*.a*.
+aa
+Output:
+2
+
+
+Test 9
+Input:
+a**a.b.c.a.b.a.
+aabcac
+Output:
+5
+
+
+Test 10
+Input:
+abb.*.c.ac.*ba.*.c.+aa.a.*b.+*a.a.
+acccbbaaac
+Output:
+9
