@@ -13,6 +13,7 @@ string main_string;
 size_t lenght;
 
 struct Reg_exp {
+  // init by chars - a/b/c
   explicit Reg_exp(char symbol)
       : prefixes(lenght, vector<size_t>(lenght)),
         full_words(lenght, vector<size_t>(lenght)), has_empty_word(false) {
@@ -23,9 +24,10 @@ struct Reg_exp {
       }
     }
   }
+  // req1 + reg2
   Reg_exp &operator+=(const Reg_exp &right) {
-    for (size_t i = 0; i < main_string.size(); ++i) {
-      for (size_t j = 0; j < main_string.size(); ++j) {
+    for (size_t i = 0; i < lenght; ++i) {
+      for (size_t j = 0; j < lenght; ++j) {
         this->full_words[i][j] = std::max(this->full_words[i][j], right.full_words[i][j]);
         this->prefixes[i][j] = std::max(this->prefixes[i][j], right.prefixes[i][j]);
       }
@@ -33,6 +35,7 @@ struct Reg_exp {
     this->has_empty_word = std::max(this->has_empty_word, right.has_empty_word);
     return *this;
   }
+  // reg1 * reg2
   Reg_exp &operator*=(const Reg_exp &right) {
     vector<vector<size_t>> new_prefixes(lenght, vector<size_t>(lenght));
     for (size_t k = 0; k < lenght; ++k) {
@@ -70,6 +73,7 @@ struct Reg_exp {
     this->has_empty_word = this->has_empty_word * right.has_empty_word;
     return *this;
   }
+  // (reg)*
   Reg_exp &operator*() {
     vector<vector<size_t >> new_prefixes(lenght, vector<size_t>(lenght));
 
@@ -111,7 +115,10 @@ struct Reg_exp {
     return *this;
   }
 
-  vector<vector<size_t>> full_words;  // full_words[k] - хранятся длины всех слов в регулярке, начин с позиции k
+  // два вектора: full_words[i][j] == 1 <=> в регулярке есть СЛОВО u[i..j]
+  //  prefixes[i][j] == 1 <=> регулярка задает слово, префиксом которого является u[i..j]
+
+  vector<vector<size_t>> full_words;
   vector<vector<size_t>> prefixes;
   bool has_empty_word;
 };
@@ -158,6 +165,7 @@ int main() {
       return 0;
     }
   }
-  cout << "Didn't find the matches";
+  cout << "No";
   return 0;
+
 }
