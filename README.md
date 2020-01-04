@@ -20,7 +20,7 @@ Tests:
 
 Test 1
 Input:
-ab+c.aba.∗.bac.+.+*
+ab+c.aba.*.bac.+.+*
 abacb
 Output:
 5
